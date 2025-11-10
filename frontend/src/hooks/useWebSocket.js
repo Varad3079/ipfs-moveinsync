@@ -15,8 +15,8 @@ export const useWebSocket = (floorPlanId, onMessageCallback, role = 'user') => {
     if (!token) return;
 
     const proto = window.location.protocol === 'https:' ? 'wss' : 'ws';
-    const host = window.location.hostname;
-    
+    //const host = window.location.hostname;
+    const host = import.meta.env.VITE_WEBSOCKET_HOST || window.location.hostname;
     let url;
     if (floorPlanId === 'company') {
       url = `${proto}://${host}:8000/ws/admin/live-feed/company?token=${token}`;
