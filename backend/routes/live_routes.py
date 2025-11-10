@@ -7,7 +7,12 @@ from utils.websocket_manager import manager, REDIS_CHANNEL
 from db.redis_conn import get_redis
 import redis.asyncio as aioredis 
 from typing import Optional # --- NEW: Import Optional ---
+from dotenv import load_dotenv
+import os
 
+# Load environment variables from .env
+load_dotenv()
+REDIS_URL = os.environ.get("REDIS_URL", "redis://default:6379" )
 router = APIRouter()
 
 # --- UPDATED: The redis_listener is now more powerful ---
@@ -19,7 +24,7 @@ async def redis_listener(websocket: WebSocket, company_id: str, floor_plan_id: O
     """
     r = None # --- FIX: Define r outside try block ---
     try:
-        r = await aioredis.from_url("redis://localhost:6379")
+        r = await aioredis.from_url(REDIS_URL)
         async with r.pubsub() as pubsub:
             await pubsub.subscribe(REDIS_CHANNEL)
             
