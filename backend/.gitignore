@@ -1,0 +1,36 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+.venv/
+venv/
+Venv/
+venv.bak/
+.env
+.flaskenv
+.vscode/
+.idea/
+
+# FastAPI/Web specific
+*.db
+*.sqlite3
+*.log
+tmp/
+logs/
+media/
+static/
+dist/
+build/
+
+# Operating System Files
+.DS_Store
+Thumbs.db
+
+# IDEs and Editors
+*.sublime-project
+*.sublime-workspace
+*.vscode/
+.idea/
